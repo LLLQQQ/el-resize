@@ -1,0 +1,11 @@
+{
+  "name": "el-resize",
+  "version": "0.1.0",
+  "description": "add resize listener on any html element",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
