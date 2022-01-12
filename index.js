@@ -1,4 +1,7 @@
 
+// Array{el,rmListener}
+let elList = [];
+
 const elResize = (el, cb, conf) => {
     const callback = cb ?? (() => { })
     const initialCall = conf?.initialCall ?? false
@@ -12,7 +15,14 @@ const elResize = (el, cb, conf) => {
             }
         }
     }
+    let rmListener = () => { }
     if (!!el) {
+        // rm prev listener
+        const existedItem = elList.filter(({ el: prevEl }) => prevEl === el)[0] ?? null
+        if (!!existedItem) {
+            existedItem.rmListener()
+        }
+
         // wrapper
         const wrapperEl = document.createElement('div')
         Object.assign(wrapperEl.style, {
@@ -79,7 +89,18 @@ const elResize = (el, cb, conf) => {
         scrollWrapperEl1.scrollLeft = 10000
         scrollWrapperEl2.scrollTop = 10000
         scrollWrapperEl2.scrollLeft = 10000
+
+        rmListener = () => {
+            el.removeChild(wrapperEl)
+            elList = elList.filter(({ el: existedEl }) => existedEl !== el)
+        }
+
+        elList.push({
+            el
+            , rmListener
+        })
     }
+    return rmListener
 }
 
 const funcs = {
