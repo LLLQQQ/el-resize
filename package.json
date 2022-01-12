@@ -1,10 +1,11 @@
 {
   "name": "el-resize",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "add resize listener on any html element",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "babel index.js --out-dir lib"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/LLLQQQ/el-resize/issues"
   },
-  "homepage": "https://github.com/LLLQQQ/el-resize#readme"
+  "homepage": "https://github.com/LLLQQQ/el-resize#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8"
+  }
 }
